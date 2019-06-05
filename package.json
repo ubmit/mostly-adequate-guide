@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "prettier": "^1.17.1"
+  },
+  "dependencies": {
+    "immutable": "^4.0.0-rc.12"
   }
 }

@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@mostly-adequate/support@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@mostly-adequate/support/-/support-2.0.1.tgz#6d5bb5e57bb38a9f5ecdd75e71356e1d880f0439"
+  integrity sha512-+16tUURaxiGFGBiYcI4Xu82UsMLSxc2F5DVGimMVkkP/tO+wRNuDPUJTW9YMY7UlHW9KQ9XRHShDEubqliy7vA==
+
 immutable@^4.0.0-rc.12:
   version "4.0.0-rc.12"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.0.0-rc.12.tgz#ca59a7e4c19ae8d9bf74a97bdf0f6e2f2a5d0217"

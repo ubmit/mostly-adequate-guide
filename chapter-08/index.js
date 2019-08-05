@@ -6,7 +6,17 @@ const {
   match,
   Either,
   Left,
-  curry
+  curry,
+  compose,
+  add,
+  concat,
+  toString,
+  map,
+  either,
+  identity,
+  IO,
+  reverse,
+  safeProp
 } = require("@mostly-adequate/support");
 const moment = require("moment");
 
@@ -92,3 +102,72 @@ getAge(moment(), { birthDate: "2005-12-12" });
 
 getAge(moment(), { birthDate: "July 4, 2001" });
 // Left('Birth date could not be parsed')
+
+// fortune :: Number => String
+const fortune = compose(
+  concat("If you survive, you will be "),
+  toString,
+  add(1)
+);
+
+fortune(23);
+// "If you survice, you will be 24"
+
+const zoltar = compose(
+  console.log,
+  either(identity, fortune),
+  getAge(moment())
+);
+
+zoltar({ birthDate: "2005-12-12" });
+
+zoltar({ birthDate: "balloons!" });
+
+// ioWindow :: IO WIndow
+const ioWindow = new IO(() => window);
+
+ioWindow.map(win => win.innerWidth);
+
+// topRoute :: String -> Maybe String
+const topRoute = compose(
+  Maybe.of,
+  reverse
+);
+
+// bottomRoute :: String -> Maybe String;
+const bottomRoute = compose(
+  map(reverse),
+  Maybe.of
+);
+
+topRoute("hi");
+bottomRoute("hi");
+
+// Write a function `validateName` which checks whether
+// a user has a name longer than 3 characters or return
+// an error message. Then use `either`, `showWelcome`
+// and `save` to write a `register` function to signup
+// and welcome a user when the validation is ok.
+// Remember either's two arguments must return the same type.
+
+const validateLength = name =>
+  name.length <= 3
+    ? left("the name is not longer than 3 chars")
+    : Either.of(name);
+
+// validateName :: User -> Either String ()
+const validateName = compose(
+  validateLength,
+  prop("name")
+);
+
+const success = compose(
+  map(showWelcome),
+  save
+);
+
+// register :: User -> IO String
+const register = compose(
+  either(IO.of, success),
+  validateUser(validateName)
+);

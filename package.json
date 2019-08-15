@@ -1,10 +1,13 @@
 {
   "devDependencies": {
+    "eslint": "^6.1.0",
     "prettier": "^1.17.1"
   },
   "dependencies": {
     "@mostly-adequate/support": "^2.0.1",
     "immutable": "^4.0.0-rc.12",
+    "jquery": "^3.4.1",
+    "jsdom": "^15.1.1",
     "moment": "^2.24.0",
     "ramda": "^0.26.1"
   }

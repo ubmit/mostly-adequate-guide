@@ -7,7 +7,7 @@
     "@mostly-adequate/support": "^2.0.1",
     "immutable": "^4.0.0-rc.12",
     "jquery": "^3.4.1",
-    "jsdom": "^15.1.1",
+    "jsdom": "^16.5.0",
     "moment": "^2.29.4",
     "ramda": "^0.26.1"
   }
